@@ -1,6 +1,4 @@
-!
-
-  function(c) {
+!function(c) {
     function e (n) { if (t[n]) {
       return t[n].exports;
     }
