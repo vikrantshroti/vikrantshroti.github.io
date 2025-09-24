@@ -102,7 +102,30 @@ main > .tagline {
 #featuredProjects {
     padding: 50px;
     text-align: center;
+    background-color: #f0f0f0;
+}
+
+
+.featured-content {
     background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-item p:first-child {
+    width: 20%;
+}
+
+.project-item p:last-child {
+    width: 75%;
+    text-align: justify;
 }
 
 #featuredProjects h2 {
