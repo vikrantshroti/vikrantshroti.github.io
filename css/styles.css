@@ -69,3 +69,43 @@ main > .tagline {
 	width: 2.65rem;
 	height: 2.65rem;
 }
+
+/* Scroll Button Styles */
+#scrollButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scrollButton:hover {
+    background-color: #f0f0f0;
+}
+
+#scrollButton i {
+    font-size: 24px;
+}
+
+/* Featured Projects Section Styles */
+#featuredProjects {
+    padding: 50px;
+    text-align: center;
+    background-color: white;
+}
+
+#featuredProjects h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
