@@ -111,6 +111,13 @@ main > .tagline {
   padding-bottom: 100px;
 }
 
+#featuredProjects h2 {
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-style: italic;
+}
+
 .featured-content {
   background-color: white;
   padding: 30px;
@@ -120,6 +127,7 @@ main > .tagline {
 
 .project-item {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
@@ -138,10 +146,6 @@ main > .tagline {
   display: inline;
 }
 
-.project-item a:hover {
-  color: blue;
-}
-
 .project-item p:last-child {
   width: 60%;
   text-align: justify;
@@ -150,4 +154,11 @@ main > .tagline {
 
 .featured-projects {
   margin-bottom: 10px;
+}
+
+.first-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
 }
