@@ -23,26 +23,133 @@
 	<!-- <link rel="stylesheet" href="css/themes/white-grey.css"> -->
 	<!-- <link rel="stylesheet" href="css/themes/white-red.css"> -->
 	<!-- <link rel="stylesheet" href="css/themes/yellow-black.css"> -->
+
+	<!-- Google Material Design Lite CSS -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+	<style>
+		#scrollButton {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background-color: #333;
+			color: white;
+			border: none;
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			opacity: 1;
+			transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+			transform: translateY(0);
+			z-index: 1000;
+		}
+
+		#scrollButton:active,
+		#scrollButton:focus {
+			outline: none;
+			box-shadow: none;
+		}
+
+		#scrollButton:hover {
+			background-color: #000;
+		}
+
+		.page-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			min-height: 100vh;
+			/* Ensure it takes full viewport height for vertical centering */
+			padding: 20px;
+			/* Add some padding around the content */
+		}
+
+		.intro {
+			font-size: 4.5em;
+			/* Larger font size for intro */
+			margin-bottom: 20px;
+			color: #fff;
+		}
+
+		.tagline {
+			font-size: 2.1em;
+			/* Slightly smaller for tagline */
+			margin-bottom: 30px;
+			margin-top: 15px;
+			color: #fff;
+		}
+
+		.icons-social a {
+			font-size: 2em;
+			/* Adjust social icon size */
+			margin: 0 10px;
+			color: #fff;
+			/* MDL grey */
+			transition: color 0.3s ease-in-out;
+		}
+
+		.icons-social a:hover {
+			color: #757575;
+			/* MDL indigo on hover */
+		}
+
+		@media (max-width: 768px) {
+			.intro {
+				font-size: 2.5em;
+				/* Smaller font size for mobile intro */
+			}
+
+			.tagline {
+				font-size: 1.2em;
+				/* Smaller font size for mobile tagline */
+			}
+
+			.icons-social a {
+				font-size: 1.5em;
+				/* Smaller social icon size for mobile */
+			}
+		}
+
+		#scrollButton.show {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		#scrollButton.hide {
+			opacity: 0;
+			transform: translateY(100px);
+		}
+	</style>
 </head>
 
-<body>
-	<main>
-		<div class="intro">Hello, I'm Vikrant!</div>
-		<div class="tagline">Full Stack Developer | Code Fanatic | Tech Entusiast</div>
-		<!-- Find your icons from here - https://fontawesome.com/icons?d=gallery&s=brands -->
-		<div class="icons-social">
-			<a target="_blank" href="https://github.com/vikrantshroti"><i class="fab fa-github"></i></a>
-			<a target="_blank" href="https://play.google.com/store/apps/developer?id=Vikrant+Shroti"><i
-					class="fab fa-google-play"></i></a>
-			<!--<a target="_blank" href="https://twitter.com/vikrantshroti"><i class="fab fa-twitter"></i></a> -->
-			<!--<a target="_blank" href="https://stackoverflow.com/story/vikrantshroti"><i class="fab fa-stack-overflow"></i></a>-->
-			<a target="_blank" href="https://www.linkedin.com/in/vikrantshroti"><i class="fab fa-linkedin"></i></a>
-			<!-- <a target="_blank" href="https://medium.com/@vikrantshroti"><i class="fab fa-medium"></i></a>
+<body class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	<main class="mdl-layout__content">
+		<div class="page-content">
+			<div class="intro">Hello, I'm Vikrant!</div>
+			<div class="tagline">Full Stack Developer | Code Fanatic | Tech Entusiast</div>
+			<!-- Find your icons from here - https://fontawesome.com/icons?d=gallery&s=brands -->
+			<div class="icons-social">
+				<a target="_blank" href="https://github.com/vikrantshroti"><i class="fab fa-github"></i></a>
+				<a target="_blank" href="https://play.google.com/store/apps/developer?id=Vikrant+Shroti"><i
+						class="fab fa-google-play"></i></a>
+				<!--<a target="_blank" href="https://twitter.com/vikrantshroti"><i class="fab fa-twitter"></i></a> -->
+				<!--<a target="_blank" href="https://stackoverflow.com/story/vikrantshroti"><i class="fab fa-stack-overflow"></i></a>-->
+				<a target="_blank" href="https://www.linkedin.com/in/vikrantshroti"><i class="fab fa-linkedin"></i></a>
+				<!-- <a target="_blank" href="https://medium.com/@vikrantshroti"><i class="fab fa-medium"></i></a>
 			<a target="_blank" href="https://www.freecodecamp.org"><i class="fab fa-free-code-camp"></i></a>
 			<a target="_blank" href="https://www.behance.net"><i class="fab fa-behance"></i></a>
 			<a target="_blank" href="https://codepen.io"><i class="fab fa-codepen"></i></a> -->
-			<a href="mailto:vikrantshroti@gmail.com"><i class="fas fa-envelope"></i></a>
+				<a href="mailto:vikrantshroti@gmail.com"><i class="fas fa-envelope"></i></a>
 
+			</div>
 		</div>
 	</main>
 
@@ -198,7 +305,25 @@
 		</div>
 	</section>
 
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<script src="js/scripts.js"></script>
+	<script>
+		const scrollButton = document.getElementById('scrollButton');
+
+		window.addEventListener('scroll', () => {
+			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+				scrollButton.classList.remove('show');
+				scrollButton.classList.add('hide');
+			} else {
+				scrollButton.classList.remove('hide');
+				scrollButton.classList.add('show');
+			}
+		});
+
+		scrollButton.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	</script>
 </body>
 
 </html>
