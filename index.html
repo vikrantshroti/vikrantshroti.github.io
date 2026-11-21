@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -10,19 +10,10 @@
 
 	<link rel="icon" href="favicon.ico" type="image/png" />
 
-	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/styles.css">
-	<!-- <link rel="stylesheet" href="css/themes/indigo-white.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/green-white.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/red-white.css"> -->
-	<link rel="stylesheet" href="css/themes/grey-white.css">
-	<!-- <link rel="stylesheet" href="css/themes/white-indigo.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/white-blue.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/white-grey.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/white-red.css"> -->
-	<!-- <link rel="stylesheet" href="css/themes/yellow-black.css"> -->
 
 	<!-- Google Material Design Lite CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,33 +22,36 @@
 	<style>
 		#scrollButton {
 			position: fixed;
-			bottom: 20px;
-			right: 20px;
-			background-color: #333;
-			color: white;
-			border: none;
+			bottom: 24px;
+			right: 24px;
+			width: 48px;
+			height: 48px;
 			border-radius: 50%;
-			width: 50px;
-			height: 50px;
-			font-size: 24px;
+			background-color: #7aa2f7;
+			color: #1e1e2e;
+			border: none;
+			cursor: pointer;
+			font-size: 20px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			cursor: pointer;
-			opacity: 1;
-			transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-			transform: translateY(0);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			transition: transform 0.2s ease, background-color 0.2s ease;
 			z-index: 1000;
+			opacity: 0;
+			transform: translateY(20px);
+			pointer-events: none;
 		}
 
-		#scrollButton:active,
-		#scrollButton:focus {
-			outline: none;
-			box-shadow: none;
+		#scrollButton.show {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
 		}
 
 		#scrollButton:hover {
-			background-color: #000;
+			background-color: #89b4fa;
+			transform: scale(1.05);
 		}
 
 		.page-content {
@@ -66,66 +60,184 @@
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-			min-height: 100vh;
-			/* Ensure it takes full viewport height for vertical centering */
+			min-height: 70vh;
 			padding: 20px;
-			/* Add some padding around the content */
 		}
 
 		.intro {
-			font-size: 4.5em;
-			/* Larger font size for intro */
-			margin-bottom: 20px;
+			font-family: "Reem Kufi", sans-serif;
+			font-size: 3.5rem;
+			font-weight: 600;
+			margin-bottom: 12px;
 			color: #fff;
+			letter-spacing: -0.5px;
 		}
 
 		.tagline {
-			font-size: 2.1em;
-			/* Slightly smaller for tagline */
-			margin-bottom: 30px;
-			margin-top: 15px;
-			color: #fff;
+			font-size: 1.25rem;
+			margin-bottom: 32px;
+			color: #a6adc8;
+			font-weight: 400;
+		}
+
+		.about {
+			max-width: 640px;
+			margin: 0 auto 48px;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: #cdd6f4;
+		}
+
+		.icons-social {
+			display: flex;
+			justify-content: center;
+			gap: 24px;
+			margin-bottom: 48px;
+			flex-wrap: wrap;
 		}
 
 		.icons-social a {
-			font-size: 2em;
-			/* Adjust social icon size */
-			margin: 0 10px;
-			color: #fff;
-			/* MDL grey */
-			transition: color 0.3s ease-in-out;
+			width: 56px;
+			height: 56px;
+			border-radius: 14px;
+			background: rgba(255, 255, 255, 0.08);
+			color: #cdd6f4;
+			font-size: 1.5rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+			border: 1px solid rgba(255, 255, 255, 0.1);
 		}
 
 		.icons-social a:hover {
-			color: #757575;
-			/* MDL indigo on hover */
+			transform: translateY(-4px);
+			border-color: rgba(255, 255, 255, 0.3);
+		}
+
+		.icons-social a.github:hover { background: #24292f; color: #fff; border-color: #24292f; }
+		.icons-social a.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+		.icons-social a.google-play:hover { background: #00b93d; color: #fff; border-color: #00b93d; }
+		.icons-social a.envelope:hover { background: #ea4335; color: #fff; border-color: #ea4335; }
+
+		.section-title {
+			font-family: "Reem Kufi", sans-serif;
+			font-size: 2rem;
+			font-weight: 600;
+			margin-bottom: 32px;
+			color: #fff;
+			letter-spacing: -0.5px;
+		}
+
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 24px;
+			max-width: 1080px;
+			width: 100%;
+			padding: 0 20px;
+			margin: 0 auto 64px;
+		}
+
+		.project-card {
+			background: #2a2a3a;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			padding: 24px;
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.project-card:hover {
+			transform: translateY(-6px);
+			border-color: rgba(122, 162, 247, 0.5);
+			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+		}
+
+		.project-title {
+			font-size: 1.15rem;
+			font-weight: 600;
+			color: #fff;
+			margin-bottom: 12px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.project-title i {
+			color: #7aa2f7;
+		}
+
+		.project-description {
+			font-size: 0.95rem;
+			line-height: 1.55;
+			color: #a6adc8;
+			margin-bottom: 20px;
+			flex: 1;
+		}
+
+		.project-actions {
+			display: flex;
+			gap: 10px;
+			margin-top: auto;
+		}
+
+		.project-actions a {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 6px;
+			padding: 10px 14px;
+			border-radius: 8px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			text-decoration: none;
+			transition: all 0.2s ease;
+		}
+
+		.project-actions a.demo {
+			background: #7aa2f7;
+			color: #1e1e2e;
+			border: 1px solid #7aa2f7;
+		}
+
+		.project-actions a.demo:hover {
+			background: #89b4fa;
+			transform: translateY(-2px);
+		}
+
+		.project-actions a.source {
+			background: transparent;
+			color: #cdd6f4;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.project-actions a.source:hover {
+			background: rgba(255, 255, 255, 0.08);
+			border-color: rgba(255, 255, 255, 0.4);
+			transform: translateY(-2px);
 		}
 
 		@media (max-width: 768px) {
 			.intro {
-				font-size: 2.5em;
-				/* Smaller font size for mobile intro */
+				font-size: 2.2rem;
 			}
 
 			.tagline {
-				font-size: 1.2em;
-				/* Smaller font size for mobile tagline */
+				font-size: 1.1rem;
 			}
 
-			.icons-social a {
-				font-size: 1.5em;
-				/* Smaller social icon size for mobile */
+			.projects-grid {
+				grid-template-columns: 1fr;
+				padding: 0 16px;
 			}
-		}
 
-		#scrollButton.show {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		#scrollButton.hide {
-			opacity: 0;
-			transform: translateY(100px);
+			.project-card {
+				padding: 20px;
+			}
 		}
 	</style>
 </head>
@@ -133,205 +245,127 @@
 <body class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 	<main class="mdl-layout__content">
 		<div class="page-content">
-			<div class="intro">Hello, I'm Vikrant!</div>
-			<div class="tagline">Full Stack Developer | Code Fanatic | Tech Entusiast</div>
-			<!-- Find your icons from here - https://fontawesome.com/icons?d=gallery&s=brands -->
+			<div class="hero">
+				<div class="hero-text">
+					<div class="greeting">Hi There! <span class="wave">👋</span></div>
+					<div class="name">I'm <span class="name-highlight">Vikrant Shroti</span></div>
+					<div class="role">Full Stack Developer | Code Fanatic | Tech Enthusiast</div>
+					<div class="hero-divider"></div>
+					<div class="hero-ctas">
+						<a class="btn btn-primary" href="mailto:vikrantshroti@gmail.com"><i class="fas fa-envelope"></i> Contact Me</a>
+						<a class="btn btn-outline" href="https://github.com/vikrantshroti" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<img class="hero-img" src="assets/terminal-icon.svg" alt="Terminal command line interface developer icon" />
+				</div>
+			</div>
+			<div class="about">
+				I build things for the web, mobile, and beyond. Here are some of the projects I've worked on —
+				from bots and extensions to games and open-source tools.
+			</div>
 			<div class="icons-social">
-				<a target="_blank" href="https://github.com/vikrantshroti"><i class="fab fa-github"></i></a>
-				<a target="_blank" href="https://play.google.com/store/apps/developer?id=Vikrant+Shroti"><i
-						class="fab fa-google-play"></i></a>
-				<!--<a target="_blank" href="https://twitter.com/vikrantshroti"><i class="fab fa-twitter"></i></a> -->
-				<!--<a target="_blank" href="https://stackoverflow.com/story/vikrantshroti"><i class="fab fa-stack-overflow"></i></a>-->
-				<a target="_blank" href="https://www.linkedin.com/in/vikrantshroti"><i class="fab fa-linkedin"></i></a>
-				<!-- <a target="_blank" href="https://medium.com/@vikrantshroti"><i class="fab fa-medium"></i></a>
-			<a target="_blank" href="https://www.freecodecamp.org"><i class="fab fa-free-code-camp"></i></a>
-			<a target="_blank" href="https://www.behance.net"><i class="fab fa-behance"></i></a>
-			<a target="_blank" href="https://codepen.io"><i class="fab fa-codepen"></i></a> -->
-				<a href="mailto:vikrantshroti@gmail.com"><i class="fas fa-envelope"></i></a>
-
+				<a class="github" target="_blank" href="https://github.com/vikrantshroti" aria-label="GitHub"><i class="fab fa-github"></i></a>
+				<a class="linkedin" target="_blank" href="https://www.linkedin.com/in/vikrantshroti" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+				<a class="google-play" target="_blank" href="https://play.google.com/store/apps/developer?id=Vikrant+Shroti" aria-label="Google Play"><i class="fab fa-google-play"></i></a>
+				<a class="envelope" href="mailto:vikrantshroti@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
 			</div>
 		</div>
+
+		<button id="scrollButton"><i class="fas fa-arrow-up"></i></button>
+
+		<section id="featuredProjects">
+			<div class="featured-content">
+				<h2 class="section-title">Featured Projects</h2>
+				<div class="projects-grid">
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-book"></i> Hindu Prayers</div>
+						<div class="project-description">A collection of prayers from various traditions. Browse by category, view text in Sanskrit, Transliteration, and English, and listen to audio recordings.</div>
+						<div class="project-actions">
+							<a class="demo" href="https://vikrantshroti.github.io/hindu-prayers/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fab fa-x-twitter"></i> Twitter Bot</div>
+						<div class="project-description">A simple Twitter bot that fetches popular tweets on trending topics via Google News, summarizes or rephrases them using xAI, and posts the result back to Twitter. Built with Node.js, twitter-api-v2, and OpenAI.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/twitter-trend-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fab fa-telegram"></i> Telegram Bot</div>
+						<div class="project-description">A Telegram bot to track price and keywords on any website.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/telegram-track-anything-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-gamepad"></i> Minimal Flappy Bird Game</div>
+						<div class="project-description">A minimal Flappy Bird game bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
+						<div class="project-actions">
+							<a class="demo" href="https://trusting-cori-99d3c6.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-circle-notch"></i> Minimal Breakout Game</div>
+						<div class="project-description">A minimal Breakout game bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
+						<div class="project-actions">
+							<a class="demo" href="https://boring-pare-781c40.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-clipboard"></i> Chrome Extension: What was that!</div>
+						<div class="project-description">A simple and modern clipboard manager for Chrome. Quickly copy, save, and manage text snippets directly from your browser.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/chrom-extension-what-was-that" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-envelope"></i> Chrome Extension: Temp Email Generator</div>
+						<div class="project-description">A simple Chrome extension that generates a temporary email address for users.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/chrome-extension-temp-email-generator" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-terminal"></i> DigiHex: cURL for Android</div>
+						<div class="project-description">An Android/iOS SDK that enables execution of cURL commands on mobile devices.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-code"></i> Javascript DSA Interview Handbook</div>
+						<div class="project-description">A curated collection of interview-focused resources for coding rounds and technical interviews — DSA questions, HTML/DOM/CSS snippets, JS one-liners, and tips.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-newspaper"></i> Hacker News Client App</div>
+						<div class="project-description">A Hacker News web app bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
+						<div class="project-actions">
+							<a class="demo" href="https://nifty-northcutt-e10290.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-star"></i> IMDB Scrapper</div>
+						<div class="project-description">Demonstrates dependencies used to build a scrapper that pulls information from IMDB.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/imdb-scrapper" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<div class="project-title"><i class="fas fa-cookie-bite"></i> Cookie Clicker Game</div>
+						<div class="project-description">A Cookie Clicker game with a React frontend and a Node.js, Express, and MongoDB backend.</div>
+						<div class="project-actions">
+							<a class="source" href="https://github.com/vikrantshroti/cookie-clicker" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
-
-	<button id="scrollButton"><i class="fas fa-arrow-down"></i></button>
-
-	<section id="featuredProjects">
-		<div class="featured-content">
-			<h2 class="featured-projects">Featured Projects</h2>
-			<table class="project-item">
-				<tr>
-					<td class="project-title">
-						<div>&bull; Hindu Prayers</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://vikrantshroti.github.io/hindu-prayers/" target="_blank">
-							<span id="demoButton"><i class="fas fa-play-circle"></i> Demo</span></a>
-
-					</td>
-					<td class="project-description">This website is a collection of prayers from various traditions. It
-						allows users to browse prayers by category, view the text in different languages (Sanskrit,
-						Transliteration, English),
-						and listen to audio recordings. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Twitter Bot
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/twitter-trend-bot" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> source code</span></a>
-
-					</td>
-					<td class="project-description">This project is a simple Twitter bot that fetches popular tweets on
-						trending topics via google news, summarizes or rephrases them using xAI, and posts the result
-						back to Twitter. It is built with Node.js and uses the twitter-api-v2 and openai libraries.
-					</td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Telegram Bot
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/telegram-track-anything-bot" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">This a telegram bot which can be use to track price / keywords on
-						any website </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Minimal Flappy Bird Game
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://trusting-cori-99d3c6.netlify.app/" target="_blank">
-							<span id="demoButton"><i class="fas fa-play-circle"></i> Play</span></a>
-
-					</td>
-					<td class="project-description">It is a minimal flappy bird game bootstrapped with ParcelJS, RxJS
-						and
-						TypeScript. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Minimal Breakout Game
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://boring-pare-781c40.netlify.app/" target="_blank">
-							<span id="demoButton"><i class="fas fa-play-circle"></i> Play</span></a>
-
-					</td>
-					<td class="project-description">It is a minimal Breakout game bootstrapped with ParcelJS, RxJS and
-						TypeScript. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Chrome Extension: What was that!
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/chrom-extension-what-was-that" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">A simple and modern clipboard manager for Chrome. Quickly copy,
-						save,
-						and manage text snippets directly from your browser. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Chrome extension: Temp Email Generator
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https.github.com/vikrantshroti/chrome-extension-temp-email-generator" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">A simple Chrome extension that generates a temporary email address
-						for
-						users. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; DigiHex: cURL for android
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/DigiHex" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">An Android/iOS SDK that enables execution of cURL commands on mobile
-						devices. Currently, mobile vendors do not provide native support for cURL execution, making it
-						difficult for developers and testers to measure critical network parameters directly from mobile
-						apps. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Javascript DSA Interview Handbook
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/DigiHex" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">A curated collection of interview-focused resources to help you
-						prepare for coding rounds and technical interviews.
-						<br>- DSA Questions: Real-world problems with test cases, constraints, and complexity analysis.
-						<br>- HTML / DOM / CSS Snippets: Frontend-specific coding challenges from interviews.
-						<br>- JS Snippets: Quick one-liner questions on core JavaScript concepts (hoisting, scoping,
-						etc.).
-						<br>- Tips & Tricks: Handy techniques to solve problems faster and more efficiently.
-					</td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Hacker News Client App
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://nifty-northcutt-e10290.netlify.app/" target="_blank">
-							<span id="demoButton"><i class="fas fa-play-circle"></i> Demo</span></a>
-
-					</td>
-					<td class="project-description">It is a Hacker News Web App bootstrapped with ParcelJS, RxJS and
-						TypeScript. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; IMDB Scrapper
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/imdb-scrapper" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">This project demonstrates usage of following dependencies to build a
-						scapper to scrap information from IMDB. </td>
-				</tr>
-				<tr>
-					<td class="project-title">
-						<div>&bull; Cookie Clicker Game
-						</div>
-					</td>
-					<td class="demo-btn-container">
-						<a href="https://github.com/vikrantshroti/cookie-clicker" target="_blank">
-							<span id="githubButton"><i class="fab fa-github"></i> Source Code</span></a>
-
-					</td>
-					<td class="project-description">It is a Cookie Clicker game where frontend is created via react and
-						backend is created node js, express js and mongodb. </td>
-				</tr>
-			</table>
-		</div>
-	</section>
 
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<script src="js/scripts.js"></script>
@@ -339,11 +373,9 @@
 		const scrollButton = document.getElementById('scrollButton');
 
 		window.addEventListener('scroll', () => {
-			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
 				scrollButton.classList.remove('show');
-				scrollButton.classList.add('hide');
 			} else {
-				scrollButton.classList.remove('hide');
 				scrollButton.classList.add('show');
 			}
 		});
