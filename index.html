@@ -383,6 +383,18 @@
 		scrollButton.addEventListener('click', () => {
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		});
+
+		// Initialize scroll button visibility on load
+		function updateScrollButton() {
+			if (window.scrollY > 100) {
+				scrollButton.classList.add('show');
+			} else {
+				scrollButton.classList.remove('show');
+			}
+		}
+		updateScrollButton();
+
+		window.addEventListener('scroll', updateScrollButton);
 	</script>
 </body>
 
