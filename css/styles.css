@@ -333,22 +333,25 @@ main {
 }
 
 #featuredProjects .featured-content {
+  max-width: 1120px;
+  margin: 0 auto;
+}
 
 #skills {
-  padding: 64px 20px !important;
-  background: #181825 !important;
-  color: #cdd6f4 !important;
+  padding: 56px 20px 64px;
+  background: #1e1e2e;
+  color: #cdd6f4;
 }
 
 #skills .skills-content {
-  max-width: 1120px !important;
-  margin: 0 auto !important;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .skills-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
-  gap: 20px !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 20px;
 }
 
 .skill-group {
@@ -363,13 +366,13 @@ main {
   align-items: center;
   gap: 10px;
   margin: 0 0 18px;
-  color: #fff !important;
+  color: #fff;
   font-size: 1.05rem;
   font-weight: 600;
 }
 
 .skill-group h3 i {
-  color: #7aa2f7 !important;
+  color: #7aa2f7;
 }
 
 .skill-list {
@@ -379,12 +382,17 @@ main {
 }
 
 .skill-list span {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
   padding: 7px 11px;
-  background: #7aa2f7 !important;
-  color: #1e1e2e !important;
-  border-radius: 4px !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  border: 1px solid rgba(122, 162, 247, 0.24);
+  border-radius: 999px;
+  background: rgba(122, 162, 247, 0.1);
+  color: #cdd6f4;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
   max-width: 1120px;
@@ -525,6 +533,19 @@ main {
 
   #featuredProjects {
     padding: 40px 16px;
+  }
+
+  #skills {
+    padding: 40px 16px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill-group {
+    padding: 20px;
   }
 
   .projects-grid {
