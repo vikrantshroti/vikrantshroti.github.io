@@ -393,6 +393,7 @@ main {
 /* Social icons brand colors on hover */
 .icons-social a.github:hover { background: #24292f; color: #fff; border-color: #24292f; }
 .icons-social a.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+.icons-social a.twitter:hover { background: #000000; color: #fff; border-color: #000000; }
 .icons-social a.google-play:hover { background: #00b93d; color: #fff; border-color: #00b93d; }
 .icons-social a.envelope:hover { background: #ea4335; color: #fff; border-color: #ea4335; }
 
