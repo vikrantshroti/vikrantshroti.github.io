@@ -333,6 +333,60 @@ main {
 }
 
 #featuredProjects .featured-content {
+
+#skills {
+  padding: 64px 20px;
+  background: #181825;
+  color: #cdd6f4;
+}
+
+#skills .skills-content {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.skill-group {
+  padding: 24px;
+  background: #2a2a3a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.skill-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.skill-group h3 i {
+  color: #7aa2f7;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-list span {
+  padding: 7px 11px;
+  background: #7aa2f7;
+  color: #1e1e2e;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
   max-width: 1120px;
   margin: 0 auto;
   padding: 0;
