@@ -54,6 +54,10 @@
 			transform: scale(1.05);
 		}
 
+		#scrollButton i {
+			font-size: 20px;
+		}
+
 		.page-content {
 			display: flex;
 			flex-direction: column;
@@ -86,29 +90,32 @@
 			font-size: 1rem;
 			line-height: 1.6;
 			color: #cdd6f4;
+			text-align: center;
 		}
 
 		.icons-social {
 			display: flex;
 			justify-content: center;
-			gap: 24px;
-			margin-bottom: 48px;
+			gap: 20px;
+			margin: 0 auto 64px;
 			flex-wrap: wrap;
+			max-width: 400px;
 		}
 
 		.icons-social a {
-			width: 56px;
-			height: 56px;
-			border-radius: 14px;
+			width: 52px;
+			height: 52px;
+			border-radius: 12px;
 			background: rgba(255, 255, 255, 0.08);
 			color: #cdd6f4;
-			font-size: 1.5rem;
+			font-size: 1.4rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			text-decoration: none;
-			transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+			transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 			border: 1px solid rgba(255, 255, 255, 0.1);
+			flex-shrink: 0;
 		}
 
 		.icons-social a:hover {
@@ -118,108 +125,9 @@
 
 		.icons-social a.github:hover { background: #24292f; color: #fff; border-color: #24292f; }
 		.icons-social a.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+		.icons-social a.twitter:hover { background: #000000; color: #fff; border-color: #000000; }
 		.icons-social a.google-play:hover { background: #00b93d; color: #fff; border-color: #00b93d; }
 		.icons-social a.envelope:hover { background: #ea4335; color: #fff; border-color: #ea4335; }
-
-		.section-title {
-			font-family: "Reem Kufi", sans-serif;
-			font-size: 2rem;
-			font-weight: 600;
-			margin-bottom: 32px;
-			color: #fff;
-			letter-spacing: -0.5px;
-		}
-
-		.projects-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-			gap: 24px;
-			max-width: 1080px;
-			width: 100%;
-			padding: 0 20px;
-			margin: 0 auto 64px;
-		}
-
-		.project-card {
-			background: #2a2a3a;
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			border-radius: 12px;
-			padding: 24px;
-			display: flex;
-			flex-direction: column;
-			transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-		}
-
-		.project-card:hover {
-			transform: translateY(-6px);
-			border-color: rgba(122, 162, 247, 0.5);
-			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-		}
-
-		.project-title {
-			font-size: 1.15rem;
-			font-weight: 600;
-			color: #fff;
-			margin-bottom: 12px;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-		}
-
-		.project-title i {
-			color: #7aa2f7;
-		}
-
-		.project-description {
-			font-size: 0.95rem;
-			line-height: 1.55;
-			color: #a6adc8;
-			margin-bottom: 20px;
-			flex: 1;
-		}
-
-		.project-actions {
-			display: flex;
-			gap: 10px;
-			margin-top: auto;
-		}
-
-		.project-actions a {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 6px;
-			padding: 10px 14px;
-			border-radius: 8px;
-			font-size: 0.9rem;
-			font-weight: 500;
-			text-decoration: none;
-			transition: all 0.2s ease;
-		}
-
-		.project-actions a.demo {
-			background: #7aa2f7;
-			color: #1e1e2e;
-			border: 1px solid #7aa2f7;
-		}
-
-		.project-actions a.demo:hover {
-			background: #89b4fa;
-			transform: translateY(-2px);
-		}
-
-		.project-actions a.source {
-			background: transparent;
-			color: #cdd6f4;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
-
-		.project-actions a.source:hover {
-			background: rgba(255, 255, 255, 0.08);
-			border-color: rgba(255, 255, 255, 0.4);
-			transform: translateY(-2px);
-		}
 
 		@media (max-width: 768px) {
 			.intro {
@@ -230,14 +138,19 @@
 				font-size: 1.1rem;
 			}
 
-			.projects-grid {
-				grid-template-columns: 1fr;
-				padding: 0 16px;
+			.icons-social a {
+				font-size: 1.5em;
 			}
+		}
 
-			.project-card {
-				padding: 20px;
-			}
+		#scrollButton.show {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		#scrollButton.hide {
+			opacity: 0;
+			transform: translateY(100px);
 		}
 	</style>
 </head>
@@ -261,8 +174,7 @@
 				</div>
 			</div>
 			<div class="about">
-				I build things for the web, mobile, and beyond. Here are some of the projects I've worked on —
-				from bots and extensions to games and open-source tools.
+				I build things for the web, mobile, and beyond. Here are some of the projects I've worked on — from bots and extensions to games and open-source tools.
 			</div>
 			<div class="icons-social">
 				<a class="github" target="_blank" href="https://github.com/vikrantshroti" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -275,128 +187,150 @@
 
 		<button id="scrollButton"><i class="fas fa-arrow-up"></i></button>
 
-		<section id="featuredProjects">
-			<div class="featured-content">
-				<h2 class="section-title">Featured Projects</h2>
-				<div class="projects-grid">
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-book"></i> Hindu Prayers</div>
-						<div class="project-description">A collection of prayers from various traditions. Browse by category, view text in Sanskrit, Transliteration, and English, and listen to audio recordings.</div>
-						<div class="project-actions">
-							<a class="demo" href="https://vikrantshroti.github.io/hindu-prayers/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
-						</div>
+		<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<script src="js/scripts.js"></script>
+		<script>
+			const scrollButton = document.getElementById('scrollButton');
+
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 100) {
+					scrollButton.classList.add('show');
+				} else {
+					scrollButton.classList.remove('show');
+				}
+			});
+
+			// Initialize scroll button visibility on load
+			function updateScrollButton() {
+				if (window.scrollY > 100) {
+					scrollButton.classList.add('show');
+				} else {
+					scrollButton.classList.remove('show');
+				}
+			}
+			updateScrollButton();
+
+			scrollButton.addEventListener('click', () => {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+		</script>
+	</main>
+
+	<section id="skills">
+		<div class="skills-content">
+			<h2 class="section-title">Skills</h2>
+			<div class="skills-grid">
+				<div class="skill-group">
+					<h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+					<div class="skill-list"><span>Generative AI</span><span>Prompt Engineering</span><span>LLM Integration</span><span>Amazon Bedrock</span><span>AI Agents</span><span>RAG Systems</span><span>AI Security</span></div>
+				</div>
+				<div class="skill-group">
+					<h3><i class="fas fa-code"></i> Development & Engineering</h3>
+					<div class="skill-list"><span>Full-Stack Development</span><span>TypeScript</span><span>Python</span><span>Go</span><span>Docker</span><span>Kubernetes</span><span>CI/CD</span></div>
+				</div>
+				<div class="skill-group">
+					<h3><i class="fas fa-database"></i> Data & Cloud</h3>
+					<div class="skill-list"><span>AWS</span><span>GCP</span><span>Azure</span><span>Data Engineering</span><span>Databases</span><span>SQL</span><span>NoSQL</span></div>
+				</div>
+				<div class="skill-group">
+					<h3><i class="fas fa-terminal"></i> DevOps & Tools</h3>
+					<div class="skill-list"><span>Terraform</span><span>Git</span><span>GitHub Actions</span><span>Jenkins</span><span>Monitoring</span><span>Logging</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="featuredProjects">
+		<div class="featured-content">
+			<h2 class="section-title">Featured Projects</h2>
+			<div class="projects-grid">
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-book"></i> Hindu Prayers</div>
+					<div class="project-description">A collection of prayers from various traditions. Browse by category, view text in Sanskrit, Transliteration, and English, and listen to audio recordings.</div>
+					<div class="project-actions">
+						<a class="demo" href="https://vikrantshroti.github.io/hindu-prayers/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fab fa-x-twitter"></i> Twitter Bot</div>
-						<div class="project-description">A simple Twitter bot that fetches popular tweets on trending topics via Google News, summarizes or rephrases them using xAI, and posts the result back to Twitter. Built with Node.js, twitter-api-v2, and OpenAI.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/twitter-trend-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fab fa-x-twitter"></i> Twitter Bot</div>
+					<div class="project-description">A simple Twitter bot that fetches popular tweets on trending topics via Google News, summarizes or rephrases them using xAI, and posts the result back to Twitter. Built with Node.js, twitter-api-v2, and OpenAI.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/twitter-trend-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fab fa-telegram"></i> Telegram Bot</div>
-						<div class="project-description">A Telegram bot to track price and keywords on any website.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/telegram-track-anything-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fab fa-telegram"></i> Telegram Bot</div>
+					<div class="project-description">A Telegram bot to track price and keywords on any website.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/telegram-track-anything-bot" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-gamepad"></i> Minimal Flappy Bird Game</div>
-						<div class="project-description">A minimal Flappy Bird game bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
-						<div class="project-actions">
-							<a class="demo" href="https://trusting-cori-99d3c6.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-gamepad"></i> Minimal Flappy Bird Game</div>
+					<div class="project-description">A minimal Flappy Bird game bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
+					<div class="project-actions">
+						<a class="demo" href="https://trusting-cori-99d3c6.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-circle-notch"></i> Minimal Breakout Game</div>
-						<div class="project-description">A minimal Breakout game bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
-						<div class="project-actions">
-							<a class="demo" href="https://boring-pare-781c40.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-circle-notch"></i> Minimal Breakout Game</div>
+					<div class="project-description">A minimal Breakout game bootstrapped with ParcelJS, RxJS and TypeScript.</div>
+					<div class="project-actions">
+						<a class="demo" href="https://boring-pare-781c40.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Play</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-clipboard"></i> Chrome Extension: What was that!</div>
-						<div class="project-description">A simple and modern clipboard manager for Chrome. Quickly copy, save, and manage text snippets directly from your browser.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/chrom-extension-what-was-that" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-clipboard"></i> Chrome Extension: What was that!</div>
+					<div class="project-description">A simple and modern clipboard manager for Chrome. Quickly copy, save, and manage text snippets directly from your browser.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/chrom-extension-what-was-that" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-envelope"></i> Chrome Extension: Temp Email Generator</div>
-						<div class="project-description">A simple Chrome extension that generates a temporary email address for users.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/chrome-extension-temp-email-generator" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-envelope"></i> Chrome Extension: Temp Email Generator</div>
+					<div class="project-description">A simple Chrome extension that generates a temporary email address for users.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/chrome-extension-temp-email-generator" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-terminal"></i> DigiHex: cURL for Android</div>
-						<div class="project-description">An Android/iOS SDK that enables execution of cURL commands on mobile devices.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-terminal"></i> DigiHex: cURL for Android</div>
+					<div class="project-description">An Android/iOS SDK that enables execution of cURL commands on mobile devices.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-code"></i> Javascript DSA Interview Handbook</div>
-						<div class="project-description">A curated collection of interview-focused resources for coding rounds and technical interviews — DSA questions, HTML/DOM/CSS snippets, JS one-liners, and tips.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-code"></i> Javascript DSA Interview Handbook</div>
+					<div class="project-description">A curated collection of interview-focused resources for coding rounds and technical interviews — DSA questions, HTML/DOM/CSS snippets, JS one-liners, and tips.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/DigiHex" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-newspaper"></i> Hacker News Client App</div>
-						<div class="project-description">A Hacker News web app bootstrapped with ParcelJS, RxJS, and TypeScript.</div>
-						<div class="project-actions">
-							<a class="demo" href="https://nifty-northcutt-e10290.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-newspaper"></i> Hacker News Client App</div>
+					<div class="project-description">A Hacker News web app bootstrapped with ParcelJS, RxJS and TypeScript.</div>
+					<div class="project-actions">
+						<a class="demo" href="https://nifty-northcutt-e10290.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-star"></i> IMDB Scrapper</div>
-						<div class="project-description">Demonstrates dependencies used to build a scrapper that pulls information from IMDB.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/imdb-scrapper" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-star"></i> IMDB Scrapper</div>
+					<div class="project-description">Demonstrates dependencies used to build a scrapper that pulls information from IMDB.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/imdb-scrapper" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
-					<div class="project-card">
-						<div class="project-title"><i class="fas fa-cookie-bite"></i> Cookie Clicker Game</div>
-						<div class="project-description">A Cookie Clicker game with a React frontend and a Node.js, Express, and MongoDB backend.</div>
-						<div class="project-actions">
-							<a class="source" href="https://github.com/vikrantshroti/cookie-clicker" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-						</div>
+				</div>
+				<div class="project-card">
+					<div class="project-title"><i class="fas fa-cookie-bite"></i> Cookie Clicker Game</div>
+					<div class="project-description">A Cookie Clicker game with a React frontend and a Node.js, Express, and MongoDB backend.</div>
+					<div class="project-actions">
+						<a class="source" href="https://github.com/vikrantshroti/cookie-clicker" target="_blank"><i class="fab fa-github"></i> Source Code</a>
 					</div>
 				</div>
 			</div>
 		</section>
-	</main>
-
-	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<script src="js/scripts.js"></script>
-	<script>
-		const scrollButton = document.getElementById('scrollButton');
-
-		window.addEventListener('scroll', () => {
-			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-				scrollButton.classList.remove('show');
-			} else {
-				scrollButton.classList.add('show');
-			}
-		});
-
-		scrollButton.addEventListener('click', () => {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
-
-		// Initialize scroll button visibility on load
-		function updateScrollButton() {
-			if (window.scrollY > 100) {
-				scrollButton.classList.add('show');
-			} else {
-				scrollButton.classList.remove('show');
-			}
-		}
-		updateScrollButton();
-
-		window.addEventListener('scroll', updateScrollButton);
-	</script>
+	</section>
 </body>
 
 </html>
