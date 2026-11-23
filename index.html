@@ -353,31 +353,26 @@
 	</section>
 
 <script>
-  // Section Navigation Mobile Menu Toggle
-  
-      }
-    });
-  }
-  
-  // Close sidebar when a link is clicked (mobile)
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 900) {
-      }
-    });
-  });
-  
-  // Smooth scroll for section navigation links
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+  // Smooth scroll for top navigation links
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all top navigation links
+    const topNavLinks = document.querySelectorAll('.top-nav-links a');
+    
+    topNavLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        // Only smooth scroll for internal anchor links
+        if (targetId.startsWith('#')) {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
     });
   });
 </script>
