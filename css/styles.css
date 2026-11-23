@@ -591,25 +591,6 @@ main {
 
 /* Section Navigation Sidebar */
 
-@media (max-width: 900px) {
-
-  .mobile-nav-toggle {
-    display: block;
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    width: 40px;
-    height: 40px;
-    background: #7aa2f7;
-    color: #1e1e2e;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2000;
-    font-size: 1.2rem;
-  }
-}
-
 /* Top Navigation Bar */
 .top-nav {
   position: fixed;
@@ -655,61 +636,25 @@ main {
   color: #7aa2f7;
 }
 
-/* Mobile Menu State */
-body.mobile-menu-open .top-nav-links {
-  display: flex !important;
-}
-
-body.mobile-menu-open {
-  overflow: hidden;
-}
-
-/* Mobile Menu Toggle Button - hidden by default, shown on mobile */
-.mobile-menu-toggle {
-  width: 40px;
-  height: 40px;
-  background: #7aa2f7;
-  color: #1e1e2e;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: fixed;
-  top: 24px;
-  left: 24px;
-  z-index: 2001;
-  font-size: 1.2rem;
-  display: none;
-}
-
-.mobile-menu-toggle:hover,
-.mobile-menu-toggle:focus {
-  background: #6f9aff;
-}
-
-.mobile-menu-toggle .fa-bars {
-  color: #1e1e2e;
-  font-size: 1.5rem;
-}
-
 @media (max-width: 900px) {
-  .mobile-menu-toggle {
-    display: block;
+  .top-nav {
+    padding: 16px 12px;
   }
 
-  /* Top Nav Links - hidden by default on mobile, shown when menu opens */
+  .top-nav-logo {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+  }
+
+  /* Top Nav Links - ALWAYS VISIBLE on mobile, horizontal line with scroll */
   .top-nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #1e1e2e;
-    padding: 16px;
-    display: none;
+    display: flex;
     flex-direction: row;
     gap: 12px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
+    padding: 8px 0;
   }
 
   .top-nav-links a {
