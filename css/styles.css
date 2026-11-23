@@ -684,3 +684,77 @@ main {
     color: #1e1e2e;
   }
 }
+
+
+/* Mobile Menu State */
+body.mobile-menu-open .top-nav-links {
+  display: block !important;
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* Top Nav Hide/Show Transition */
+.top-nav {
+  transition: transform 0.3s ease ease-out;
+}
+
+/* Mobile Menu Hamburger Animation */
+.mobile-menu-toggle {
+  width: 40px;
+  height: 40px;
+  background: #7aa2f7;
+  color: #1e1e2e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 2001;
+  font-size: 1.2rem;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus {
+  background: #6f9aff;
+}
+
+.mobile-menu-toggle .fa-bars {
+  color: #1e1e2e;
+  font-size: 1.5rem;
+}
+
+/* Hide top nav links by default on mobile (they're shown via JS) */
+@media (max-width: 900px) {
+  .top-nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1e1e2e;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .top-nav-links.active {
+    display: flex !important;
+  }
+  
+  .top-nav-links a {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background: none;
+  }
+}
