@@ -693,7 +693,7 @@ body.mobile-menu-open {
   left: 24px;
   z-index: 2001;
   font-size: 1.2rem;
-  display: none;
+  display: block;
 }
 
 @media (max-width: 900px) {
