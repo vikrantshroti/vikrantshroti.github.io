@@ -658,3 +658,78 @@ main {
     font-size: 1.2rem;
   }
 }
+
+/* Top Navigation Bar */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1e1e2e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2000;
+  padding: 16px 20px;
+}
+
+.top-nav-logo {
+  font-family: "Reem Kufi", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #cdd6f4;
+  margin-right: 32px;
+}
+
+.top-nav-logo i {
+  color: #7aa2f7;
+  margin-right: 8px;
+}
+
+.top-nav-links {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.top-nav-links a {
+  color: #cdd6f4;
+  text-decoration: none;
+  font-family: "Reem Kufi", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.top-nav-links a:hover,
+.top-nav-links a.active {
+  color: #7aa2f7;
+}
+
+/* Mobile: stack the nav links */
+@media (max-width: 900px) {
+  .top-nav {
+    padding: 16px 12px;
+  }
+  
+  .top-nav-logo {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+  }
+  
+  .top-nav-links {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .top-nav-links a {
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .top-nav-links a:hover,
+  .top-nav-links a.active {
+    background: #7aa2f7;
+    color: #1e1e2e;
+  }
+}
