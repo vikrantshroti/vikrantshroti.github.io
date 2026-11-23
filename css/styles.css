@@ -657,29 +657,14 @@ main {
 
 /* Mobile Menu State */
 body.mobile-menu-open .top-nav-links {
-  display: block !important;
+  display: flex !important;
 }
 
 body.mobile-menu-open {
   overflow: hidden;
 }
 
-/* Mobile: stack the nav links */
-@media (max-width: 900px) {
-  .top-nav {
-    padding: 16px 12px;
-  }
-  
-  .top-nav-logo {
-    margin: 0 0 12px 0;
-    font-size: 1rem;
-  }
-  
-.top-nav {
-  transition: transform 0.3s ease ease-out;
-}
-
-/* Mobile Menu Hamburger Animation */
+/* Mobile Menu Toggle Button - hidden by default, shown on mobile */
 .mobile-menu-toggle {
   width: 40px;
   height: 40px;
@@ -693,13 +678,7 @@ body.mobile-menu-open {
   left: 24px;
   z-index: 2001;
   font-size: 1.2rem;
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .mobile-menu-toggle {
-    display: block;
-  }
+  display: none;
 }
 
 .mobile-menu-toggle:hover,
@@ -712,24 +691,27 @@ body.mobile-menu-open {
   font-size: 1.5rem;
 }
 
-/* Hide top nav links by default on mobile (they're shown via JS) */
 @media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Top Nav Links - hidden by default on mobile, shown when menu opens */
   .top-nav-links {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: #1e1e2e;
-    padding: 20px;
+    padding: 16px;
     display: none;
     flex-direction: row;
     gap: 12px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
-    margin-bottom: 12px;
   }
-  
+
   .top-nav-links a {
     flex: 0 0 auto;
     width: auto;
@@ -738,22 +720,15 @@ body.mobile-menu-open {
     background: none;
     white-space: nowrap;
   }
-  
+
   .top-nav-links a:hover,
   .top-nav-links a.active {
     background: #7aa2f7;
     color: #1e1e2e;
   }
 }
-  
-  .top-nav-links.active {
-    display: flex !important;
-  }
-  
-  .top-nav-links a {
-    width: 100%;
-    padding: 12px 0;
-    border: none;
-    background: none;
-  }
+
+/* Top Nav Hide/Show Transition */
+.top-nav {
+  transition: transform 0.3s ease ease-out;
 }
