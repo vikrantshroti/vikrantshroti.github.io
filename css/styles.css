@@ -588,3 +588,73 @@ main {
     padding: 80px 40px;
   }
 }
+
+/* Section Navigation Sidebar */
+.section-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background: #1e1e2e;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.section-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section-nav li {
+  margin-bottom: 16px;
+}
+
+.section-nav a {
+  color: #cdd6f4;
+  text-decoration: none;
+  font-family: "Reem Kufi", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: block;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.section-nav a:hover,
+.section-nav a.active {
+  background: #7aa2f7;
+  color: #1e1e2e;
+}
+
+.section-nav a.active {
+  background: #7aa2f7;
+  color: #1e1e2e;
+}
+
+/* Mobile: hide sidebar, show full-width nav */
+@media (max-width: 900px) {
+  .section-nav {
+    display: none;
+  }
+  
+  .mobile-nav-toggle {
+    display: block;
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: 40px;
+    height: 40px;
+    background: #7aa2f7;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2000;
+    font-size: 1.2rem;
+  }
+}

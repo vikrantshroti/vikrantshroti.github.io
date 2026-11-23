@@ -158,6 +158,16 @@
 <body class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 	<main class="mdl-layout__content">
 		<div class="page-content">
+	<!-- Section Navigation Sidebar -->
+	<nav class="section-nav">
+		<ul>
+			<li><a class="active" href="#skills">Skills</a></li>
+			<li><a href="#featuredProjects">Featured Projects</a></li>
+			
+			
+		</ul>
+	</nav>
+	<!-- End Section Navigation Sidebar -->
 			<div class="hero">
 				<div class="hero-text">
 					<div class="greeting">Hi There! <span class="wave">👋</span></div>
@@ -339,6 +349,48 @@
 			</div>
 		</div>
 	</section>
+
+
+<script>
+  // Section Navigation Mobile Menu Toggle
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const sectionNav = document.querySelector('.section-nav');
+  
+  if (mobileNavToggle && sectionNav) {
+    mobileNavToggle.addEventListener('click', function() {
+      if (sectionNav.style.display === 'none' || sectionNav.style.display === '') {
+        sectionNav.style.display = 'block';
+      } else {
+        sectionNav.style.display = 'none';
+      }
+    });
+  }
+  
+  // Close sidebar when a link is clicked (mobile)
+  const navLinks = document.querySelectorAll('.section-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 900) {
+        sectionNav.style.display = 'none';
+      }
+    });
+  });
+  
+  // Smooth scroll for section navigation links
+  document.querySelectorAll('.section-nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
 </body>
 
 </html>
